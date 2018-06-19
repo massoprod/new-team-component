@@ -23,6 +23,8 @@ class NewUserForm extends Component {
       validEmail: true,
       passwordHidden: true,
     };
+
+    this.onNewUserSubmit = this.onNewUserSubmit.bind(this);
   };
 
   handleRoleSelectChange = (event) => {
@@ -50,17 +52,20 @@ class NewUserForm extends Component {
     return emailRegex.test(email);
   };
 
-  onNewUserSubmit = () => {
+  async onNewUserSubmit() {
     const { email } = this.state;
 
-    if (this.validateEmail(email)) {
-      this.setState({validEmail: true});
-    } else {
-      this.setState({validEmail: false});
+    try {
+      if (this.validateEmail(email)) {
+        this.setState({validEmail: true});
+      } else {
+        this.setState({validEmail: false});
+      }
+    } catch(e) {
+      console.log(e);
     }
-
-    return false;
     
+    return false;
   };
 
   showOrHidePassword = () => {

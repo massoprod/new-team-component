@@ -11,6 +11,8 @@ class ExistingUserForm extends Component {
       users: [],
       selectedUser: null,
     };
+
+    this.onExistingSave = this.onExistingSave.bind(this);
   };
 
   componentDidMount() {
@@ -30,9 +32,13 @@ class ExistingUserForm extends Component {
     this.setState({selectedUser: event.target.value});
   };
 
-  onExistingSave = () => {
-    this.setState({selectedUser: this.state.selectedUser});
-    // todo: save new user
+  async onExistingSave() {
+    try {
+      this.setState({selectedUser: this.state.selectedUser});
+      // todo: save new user
+    } catch(e) {
+      console.log(e);
+    }
   };
 
   render() {
