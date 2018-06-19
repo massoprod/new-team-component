@@ -1,0 +1,16 @@
+.formWrapper {
+  padding: 30px;
+}
+
+.formLabel {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.confirmButton {
+  background: #86b043;
+  border: none;
+  color: #FFF;
+  font-size: 14px;
+  padding: 7px 15px;
+}

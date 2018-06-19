@@ -1,5 +1,6 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "SF Optimized", system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular',  "Apple Color Emoji", Arial, Helvetica, sans-serif, emojisegoeui, symbolafont;
+  background-color: #f0f0f0;
 }
