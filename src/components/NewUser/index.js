@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './style.css';
+const classes = require('react-style-classes');
 
 class NewUserForm extends Component {
 
@@ -20,6 +21,7 @@ class NewUserForm extends Component {
       email: '',
       password: '',
       validEmail: true,
+      passwordHidden: true,
     };
   };
 
@@ -61,8 +63,17 @@ class NewUserForm extends Component {
     
   };
 
+  showOrHidePassword = () => {
+    const { passwordHidden } = this.state;
+    if(passwordHidden) {
+      this.setState({passwordHidden: false});
+    } else {
+      this.setState({passwordHidden: true});
+    }
+  };
+
   render() {
-    const { roles, validEmail } = this.state;
+    const { roles, validEmail, passwordHidden } = this.state;
 
     return (
       <div className={styles.formWrapper}>
@@ -70,7 +81,7 @@ class NewUserForm extends Component {
             <label className={styles.formLabel}>
               Role:
             </label>
-            <select style={{ marginTop: 5, marginBottom: 10 }} className={'form-control'} value={this.state.value} onChange={this.handleSelectChange}>
+            <select style={{ marginTop: 5, marginBottom: 10 }} className={classes('form-control', styles.formSelectInput)} value={this.state.value} onChange={this.handleSelectChange}>
               <option key={-1} disabled selected>SELECT USER ROLE FROM LIST</option>
               {
                 roles.map( (role, index) => {
@@ -88,28 +99,33 @@ class NewUserForm extends Component {
             <label className={styles.formLabel}>
               Name:
             </label>
-            <input className={'form-control'} type={'text'} onChange={this.handleNameChange} />
+            <input className={classes('form-control', styles.formInput)} type={'text'} onChange={this.handleNameChange} />
           </div>
 
           <div className={'form-group'}>
             <label className={styles.formLabel}>
               Surname:
             </label>
-            <input className={'form-control'} type={'text'} onChange={this.handleSurnameChange} />
+            <input className={classes('form-control', styles.formInput)} type={'text'} onChange={this.handleSurnameChange} />
           </div>
 
           <div className={'form-group'}>
             <label className={styles.formLabel}>
               Email:
             </label>
-            <input style={{borderColor: !validEmail ? 'red' : null}} className={'form-control'} type={'text'} onChange={this.handleEmailChange} />
+            <input style={{borderColor: !validEmail ? 'red' : null}} className={classes('form-control', styles.formInput)} type={'text'} onChange={this.handleEmailChange} />
           </div>
 
           <div className={'form-group'}>
             <label className={styles.formLabel}>
               Password:
             </label>
-            <input className={'form-control'} type={'text'} onChange={this.handlePasswordChange} />
+            <div className={'input-group'}>
+              <input className={classes('form-control', styles.formInput)} type={ passwordHidden ? 'password' : 'text'} onChange={this.handlePasswordChange} />
+              <span onClick={this.showOrHidePassword} className={classes('input-group-addon', styles.passwordBtn)}>
+                { passwordHidden ? 'SHOW' : 'HIDE' }
+              </span>
+            </div>
           </div>
 
           <button className={styles.confirmButton} onClick={this.onNewUserSubmit}>

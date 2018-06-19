@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './style.css';
+const classes = require('react-style-classes');
 
 class ExistingUserForm extends Component {
 
@@ -27,14 +28,11 @@ class ExistingUserForm extends Component {
 
   handleUserSelectChange = (event) => {
     this.setState({selectedUser: event.target.value});
-    console.log(this.state.selectedUser);
   };
 
   onExistingSave = () => {
-    // todo: save new user
-    
     this.setState({selectedUser: this.state.selectedUser});
-    console.log(this.state.selectedUser);
+    // todo: save new user
   };
 
   render() {
@@ -46,7 +44,7 @@ class ExistingUserForm extends Component {
           <label className={styles.formLabel}>
             Select a user:
           </label>
-          <select style={{ marginTop: 5, marginBottom: 20 }} className={'form-control'} value={this.state.value} onChange={this.handleUserSelectChange}>
+          <select style={{ marginTop: 5, marginBottom: 20 }} className={classes('form-control', styles.formSelectInput)} value={this.state.value} onChange={this.handleUserSelectChange}>
             <option key={-1} disabled selected>SELECT USER FROM LIST</option>
             {
               users.map( (user, index) => {

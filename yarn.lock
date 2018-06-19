@@ -5556,6 +5556,10 @@ react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
 
+react-style-classes@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-style-classes/-/react-style-classes-1.0.2.tgz#70c242b50096e1f04cf112d8fed744c064fdd009"
+
 react@^16.4.1:
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.4.1.tgz#de51ba5764b5dbcd1f9079037b862bd26b82fe32"
